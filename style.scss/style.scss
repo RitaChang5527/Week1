@@ -103,6 +103,11 @@
 }
 
 @media(max-width:1200px){
+    .text{
+        width: 500px; height: 80px;
+        line-height: 80px;
+    }
+
     .main{
         flex-wrap: wrap;
         justify-content: center;
@@ -132,6 +137,10 @@
 @media(max-width:600px){
     .left{
         margin-top: 8px;
+    }
+    .text{
+        width: 300px; height: 80px;
+        line-height: 40px;
     }
     .main{
         justify-content: center;
