@@ -66,6 +66,12 @@ input[type=checkbox] {
   box-sizing: border-box;
 }
 
+input[type=checkbox] {
+  margin-left: 10px;
+  width: 15px;
+  height: 15px;
+}
+
 button[type=submit] {
   background-color: #a0a0a0;
   color: #fff;
