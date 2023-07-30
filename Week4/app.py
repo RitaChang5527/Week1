@@ -24,17 +24,24 @@ def signin():
     username = request.form["username"]
     password = request.form["password"] 
 
-    session["signed_in"]=True
-    session["username"] = username
+    session["signed_in"] = False
+
+    
     #* 驗證身分
     if username=="" or password == "":
+        session["signed_in"] = False
+        print(session)
         return redirect("/error?message=帳號或密碼空白")
     
     if username == "test" and password == "test":
         # *如果成功了就會到會員頁面
+        session["signed_in"] = True
+        print(session)
         return redirect("/member")
     else:
         #* 如果不成功就會
+        session["signed_in"] = False
+        print(session)
         return redirect("/error?message=帳號或密碼錯誤")
 
 
@@ -43,16 +50,18 @@ def signin():
 def member():
     if not session.get("signed_in"):
         return redirect("/")
-    #username = session.get("username")
+    print(session)
     return render_template("member.html")
 
 @app.route("/signout", methods=["GET"])
 def signout():
     session["signed_in"]=False
+    print(session)
     return redirect("/")
 
 @app.route("/error", methods=["GET"])
 def error():
+    print(session)
     message = request.args.get("message")
     return render_template("error.html", message=f"{message}")
 
